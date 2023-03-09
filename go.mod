@@ -3,6 +3,7 @@ module github.com/sibelly/go-fundamentals
 go 1.19
 
 require (
+	github.com/aws/aws-lambda-go v1.38.0
 	github.com/mattn/go-sqlite3 v1.14.16
 	github.com/stretchr/testify v1.8.2
 )
