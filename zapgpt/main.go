@@ -54,11 +54,7 @@ func GenerateGPTText(query string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	request, err := http.NewRequest(
-		"POST",
-		"https://api.openai.com/v1/chat/completions",
-		bytes.NewBuffer(reqJson),
-	)
+	request, err := http.NewRequest("POST", "https://api.openai.com/v1/chat/completions", bytes.NewBuffer(reqJson))
 	if err != nil {
 		return "", err
 	}
@@ -90,6 +86,7 @@ func parseBase64RequestData(r string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	// content=abc&body=xpto
 	data, err := url.ParseQuery(string(databytes))
 	if err != nil {
 		return "", err
@@ -106,14 +103,14 @@ func process(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		return events.APIGatewayProxyResponse{
 			StatusCode: http.StatusInternalServerError,
 			Body:       err.Error(),
-		}, nil
+		}, err
 	}
 	text, err := GenerateGPTText(result)
 	if err != nil {
 		return events.APIGatewayProxyResponse{
 			StatusCode: http.StatusInternalServerError,
 			Body:       err.Error(),
-		}, nil
+		}, err
 	}
 
 	return events.APIGatewayProxyResponse{
