@@ -63,7 +63,6 @@ func GenerateGPTText(query string) (string, error) {
 		return "", err
 	}
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("Authorization", "Bearer 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")
 
 	response, err := http.DefaultClient.Do(request)
 	if err != nil {
