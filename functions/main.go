@@ -19,5 +19,6 @@ func main() {
 	fmt.Println(result(1, 2, 3, 5))
 
 	// Return the value of the inner func
+	// () that calls the inner func indeed and return the value
 	fmt.Println(result(1, 2, 3, 5)())
 }
